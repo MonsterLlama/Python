@@ -31,6 +31,15 @@ class Game():
                 print('Game Over!')
                 exit()
 
+            is_continue = False
+            answer      = ''
+            while(answer.upper() not in ['Y', 'N']):
+                answer = input(f"Do you wish to continue: (Y)es or (N)o: ")
+            
+            if (answer.upper() == 'N'):
+                print("Thanks for playing!")
+                exit()
+
             # Ask Player how much to bet
             bet = 0
             while (bet <= 0 and self.player2.balance >= bet):
@@ -48,7 +57,6 @@ class Game():
                     bet = 0
                 
             self.player2.balance -= bet
-
             # Deal two cards to dealer
             self.player1.cards.append(self.deck.deal_card())
             self.player1.cards.append(self.deck.deal_card())
